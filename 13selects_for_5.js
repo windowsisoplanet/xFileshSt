@@ -310,8 +310,10 @@ var version_id = $('#version_id :selected').val();
             return(false);
         }
     $('#selectBoxInfo').html('<div align="center"><img src="img/loading.gif" class="microsoft"></div>', true);
-    $('#selectBoxInfo').load('https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang);
-    window.location.href = 'https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang
+    $('#infodown).load('https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang);
+    
+   
+    window.location.href = '#infodown'
     
     return(false);
 });

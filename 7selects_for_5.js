@@ -69,7 +69,33 @@ $('#version_id').change(function () {
         $('#arch_id').attr('disabled', true);
         $('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
         return(false);
-      var urlimg = 'img/office2016.png';
+    }
+    if (version_id == '9') {
+        var urlimg = 'img/win7.png';
+    }
+    if (version_id == '10') {
+        var urlimg = 'img/win8.png';
+    }
+    if (version_id == '11') {
+        var urlimg = 'img/win8.png';
+    }
+    if (version_id == '22') {
+        var urlimg = 'img/office2010.png';
+    }
+    if (version_id == '23') {
+        var urlimg = 'img/office2010.png';
+    }
+    if (version_id == '24') {
+        var urlimg = 'img/office2007.png';
+    }
+    if (version_id == '25') {
+        var urlimg = 'img/office2011mac.png';
+    }
+    if (version_id == '35') {
+        var urlimg = 'img/office2013.png';
+    }
+    if (version_id == '36') {
+        var urlimg = 'img/office2016.png';
     }
     $('#edition_id').attr('disabled', true);
     $('#edition_id').html('<option>- ' + sloading + '... -</option>');
@@ -111,7 +137,32 @@ $('#version_id').change(function () {
 $('#edition_id').change(function () {
     var version_id = $('#version_id :selected').val();
     var urlimg = 'img/win10.png';
-    
+    if (version_id == '9') {
+        var urlimg = 'img/win7.png';
+    }
+    if (version_id == '10') {
+        var urlimg = 'img/win8.png';
+    }
+    if (version_id == '11') {
+        var urlimg = 'img/win8.png';
+    }
+    if (version_id == '22') {
+        var urlimg = 'img/office2010.png';
+    }
+    if (version_id == '23') {
+        var urlimg = 'img/office2010.png';
+    }
+    if (version_id == '24') {
+        var urlimg = 'img/office2007.png';
+    }
+    if (version_id == '25') {
+        var urlimg = 'img/office2011mac.png';
+    }
+    if (version_id == '35') {
+        var urlimg = 'img/office2013.png';
+    }
+    if (version_id == '36') {
+        var urlimg = 'img/office2016.png';
     }
     $('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
     var edition_id = $(this).val();
@@ -158,7 +209,33 @@ $('#edition_id').change(function () {
 $('#language_id').change(function () {
 var version_id = $('#version_id :selected').val();
     var urlimg = 'img/win10.png';
-    
+    if (version_id == '9') {
+        var urlimg = 'img/win7.png';
+    }
+    if (version_id == '10') {
+        var urlimg = 'img/win8.png';
+    }
+    if (version_id == '11') {
+        var urlimg = 'img/win8.png';
+    }
+    if (version_id == '22') {
+        var urlimg = 'img/office2010.png';
+    }
+    if (version_id == '23') {
+        var urlimg = 'img/office2010.png';
+    }
+    if (version_id == '24') {
+        var urlimg = 'img/office2007.png';
+    }
+    if (version_id == '25') {
+        var urlimg = 'img/office2011mac.png';
+    }
+    if (version_id == '35') {
+        var urlimg = 'img/office2013.png';
+    }
+    if (version_id == '36') {
+        var urlimg = 'img/office2016.png';
+    }
     $('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
     var language_id = $(this).val();
     if (language_id == '0') {
@@ -198,7 +275,33 @@ var version_id = $('#version_id :selected').val();
 $('#arch_id').change(function(){
 var version_id = $('#version_id :selected').val();
     var urlimg = 'img/win10.png';
-   
+    if (version_id == '9') {
+        var urlimg = 'img/win7.png';
+    }
+    if (version_id == '10') {
+        var urlimg = 'img/win8.png';
+    }
+    if (version_id == '11') {
+        var urlimg = 'img/win8.png';
+    }
+    if (version_id == '22') {
+        var urlimg = 'img/office2010.png';
+    }
+    if (version_id == '23') {
+        var urlimg = 'img/office2010.png';
+    }
+    if (version_id == '24') {
+        var urlimg = 'img/office2007.png';
+    }
+    if (version_id == '25') {
+        var urlimg = 'img/office2011mac.png';
+    }
+    if (version_id == '35') {
+        var urlimg = 'img/office2013.png';
+    }
+    if (version_id == '36') {
+        var urlimg = 'img/office2016.png';
+    }
     $('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
     var arch_id = $(this).val();
     var arch_id = $('#arch_id :selected').val();
@@ -210,6 +313,6 @@ var version_id = $('#version_id :selected').val();
     $('#selectBoxInfo').load('https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang);
     return(false);
 });
-
+});
 
 

@@ -310,7 +310,7 @@ var version_id = $('#version_id :selected').val();
 			return(false);
 		}
 	$('#selectBoxInfo').html('<div align="center"><img src="img/loading.gif" class="microsoft"></div>', true);
-	$('#selectBoxInfo').load('https://www.google.com');
+	$('#selectBoxInfo').load('https://www.windowsisoplanet.com');
 	return(false);
 });
 });

@@ -1,6 +1,6 @@
 $(document).ready(function () {
 var urlimg = 'img/win10.png';
-$('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
+$('#').html('<img src="' + urlimg + '" class="microsoft">', true);
 $('#type_id').change(function () {
     var urlimg = 'img/win10.png';
     var type_id = $(this).val();
@@ -310,7 +310,7 @@ var version_id = $('#version_id :selected').val();
             return(false);
         }
     $('#selectBoxInfo').html('<div align="center"><img src="img/loading.gif" class="microsoft"></div>', true);
-    $('#infodown).load('https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang);
+    $('#innerinfodown').load('https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang);
     
    
     window.location.href = '#infodown'

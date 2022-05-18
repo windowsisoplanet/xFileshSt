@@ -311,8 +311,8 @@ var version_id = $('#version_id :selected').val();
         }
     $('#selectBoxInfo').html('<div align="center"><img src="img/loading.gif" class="microsoft"></div>', true);
     $('#selectBoxInfo').load('https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang);
-    window.location.href = 'http://www.google.com';
-
+    window.location.href = '#Select_version';
+    
     return(false);
 });
 });

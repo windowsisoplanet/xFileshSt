@@ -1,8 +1,8 @@
 $(document).ready(function () {
-var urlimg = 'img/win10.png';
+var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
 $('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
 $('#type_id').change(function () {
-	var urlimg = 'img/win10.png';
+	var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
 	var type_id = $(this).val();
 	if (type_id == '0') {
 		$('#version_id').html('<option>- ' + selversion + ' -</option>');
@@ -58,7 +58,7 @@ $('#type_id').change(function () {
 });
 
 $('#version_id').change(function () {
-	var urlimg = 'img/win10.png';
+	var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
 	var version_id = $(this).val();
 	if (version_id == '0') {
 		$('#edition_id').html('<option>- ' + seledition + ' -</option>');
@@ -71,13 +71,13 @@ $('#version_id').change(function () {
 		return(false);
 	}
 	if (version_id == '9') {
-		var urlimg = 'img/win7.png';
+		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
 	}
 	if (version_id == '10') {
-		var urlimg = 'img/win8.png';
+		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
 	}
 	if (version_id == '11') {
-		var urlimg = 'img/win8.png';
+		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
 	}
 	if (version_id == '22') {
 		var urlimg = 'img/office2010.png';
@@ -136,15 +136,15 @@ $('#version_id').change(function () {
 
 $('#edition_id').change(function () {
 	var version_id = $('#version_id :selected').val();
-	var urlimg = 'img/win10.png';
+	var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
 	if (version_id == '9') {
-		var urlimg = 'img/win7.png';
+		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
 	}
 	if (version_id == '10') {
-		var urlimg = 'img/win8.png';
+		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
 	}
 	if (version_id == '11') {
-		var urlimg = 'img/win8.png';
+		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
 	}
 	if (version_id == '22') {
 		var urlimg = 'img/office2010.png';
@@ -208,15 +208,15 @@ $('#edition_id').change(function () {
 	
 $('#language_id').change(function () {
 var version_id = $('#version_id :selected').val();
-	var urlimg = 'img/win10.png';
+	var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
 	if (version_id == '9') {
-		var urlimg = 'img/win7.png';
+		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
 	}
 	if (version_id == '10') {
-		var urlimg = 'img/win8.png';
+		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
 	}
 	if (version_id == '11') {
-		var urlimg = 'img/win8.png';
+		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
 	}
 	if (version_id == '22') {
 		var urlimg = 'img/office2010.png';
@@ -274,7 +274,7 @@ var version_id = $('#version_id :selected').val();
 					
 $('#arch_id').change(function(){
 var version_id = $('#version_id :selected').val();
-	var urlimg = 'img/win10.png';
+	var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
 	if (version_id == '9') {
 		var urlimg = 'img/win7.png';
 	}

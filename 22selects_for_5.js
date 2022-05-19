@@ -203,7 +203,7 @@ var version_id = $('#version_id :selected').val();
 			return(false);
 		}
 
-	location.href = "#infodown";
+	location.href = "#infodowns";
 	$('#infodown').load('https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang)
 	return(false);
 });

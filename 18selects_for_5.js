@@ -311,7 +311,7 @@ var version_id = $('#version_id :selected').val();
 		}
 	$('#selectBoxInfo').html('<div align="center"><img src="img/loading.gif" class="microsoft"></div>', true);
 	location.href = "#infodown";
-	$('#innerinfodown').load('https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang)
+	$('#infodown').load('https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang)
 	return(false);
 });
 });

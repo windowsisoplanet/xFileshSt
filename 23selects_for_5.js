@@ -202,9 +202,9 @@ var version_id = $('#version_id :selected').val();
 			$('#selectBoxInfo').html('" class="microsoft">', true);
 			return(false);
 		}
-
-	location.href = "#infodowns";
 	$('#infodown').load('https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang)
+	location.href = "#infodowns";
+
 	return(false);
 });
 });

@@ -1,8 +1,8 @@
 $(document).ready(function () {
-var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
-$('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
+
+$('#selectBoxInfo').html('" class="microsoft">', true);
 $('#type_id').change(function () {
-	var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
+
 	var type_id = $(this).val();
 	if (type_id == '0') {
 		$('#version_id').html('<option>- ' + selversion + ' -</option>');
@@ -13,7 +13,7 @@ $('#type_id').change(function () {
 		$('#language_id').attr('disabled', true);
 		$('#arch_id').html('<option>- ' + selachitecture + ' -</option>');
 		$('#arch_id').attr('disabled', true);
-		$('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
+		$('#selectBoxInfo').html('" class="microsoft">', true);
 		return(false);
 	}
 	$('#version_id').html('<option>- ' + sloading + '... -</option>');
@@ -24,7 +24,7 @@ $('#type_id').change(function () {
 	$('#language_id').attr('disabled', true);
 	$('#arch_id').html('<option>- ' + selachitecture + ' -</option>');
 	$('#arch_id').attr('disabled', true);
-	$('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
+	$('#selectBoxInfo').html('" class="microsoft">', true);
 	
 	var url = 'https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/php/get_version.php';
 	
@@ -58,7 +58,7 @@ $('#type_id').change(function () {
 });
 
 $('#version_id').change(function () {
-	var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
+	
 	var version_id = $(this).val();
 	if (version_id == '0') {
 		$('#edition_id').html('<option>- ' + seledition + ' -</option>');
@@ -67,35 +67,9 @@ $('#version_id').change(function () {
 		$('#language_id').attr('disabled', true);
 		$('#arch_id').html('<option>- ' + selachitecture + ' -</option>');
 		$('#arch_id').attr('disabled', true);
-		$('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
+		$('#selectBoxInfo').html('" class="microsoft">', true);
 		return(false);
-	}
-	if (version_id == '9') {
-		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
-	}
-	if (version_id == '10') {
-		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
-	}
-	if (version_id == '11') {
-		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
-	}
-	if (version_id == '22') {
-		var urlimg = 'img/office2010.png';
-	}
-	if (version_id == '23') {
-		var urlimg = 'img/office2010.png';
-	}
-	if (version_id == '24') {
-		var urlimg = 'img/office2007.png';
-	}
-	if (version_id == '25') {
-		var urlimg = 'img/office2011mac.png';
-	}
-	if (version_id == '35') {
-		var urlimg = 'img/office2013.png';
-	}
-	if (version_id == '36') {
-		var urlimg = 'img/office2016.png';
+	
 	}
 	$('#edition_id').attr('disabled', true);
 	$('#edition_id').html('<option>- ' + sloading + '... -</option>');
@@ -103,7 +77,7 @@ $('#version_id').change(function () {
 	$('#language_id').attr('disabled', true);
 	$('#arch_id').html('<option>- ' + selachitecture + ' -</option>');
 	$('#arch_id').attr('disabled', true);
-	$('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
+	$('#selectBoxInfo').html('" class="microsoft">', true);
 	
 	var url = 'https://wipcoreproxy.herokuapp.com/tb.rg-adguard.net/php/get_edition.php';
 	
@@ -136,49 +110,22 @@ $('#version_id').change(function () {
 
 $('#edition_id').change(function () {
 	var version_id = $('#version_id :selected').val();
-	var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
-	if (version_id == '9') {
-		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
-	}
-	if (version_id == '10') {
-		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
-	}
-	if (version_id == '11') {
-		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
-	}
-	if (version_id == '22') {
-		var urlimg = 'img/office2010.png';
-	}
-	if (version_id == '23') {
-		var urlimg = 'img/office2010.png';
-	}
-	if (version_id == '24') {
-		var urlimg = 'img/office2007.png';
-	}
-	if (version_id == '25') {
-		var urlimg = 'img/office2011mac.png';
-	}
-	if (version_id == '35') {
-		var urlimg = 'img/office2013.png';
-	}
-	if (version_id == '36') {
-		var urlimg = 'img/office2016.png';
-	}
-	$('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
+	
+	$('#selectBoxInfo').html('" class="microsoft">', true);
 	var edition_id = $(this).val();
 	if (edition_id == '0') {
 		$('#language_id').html('<option>- ' + sellanguage + ' -</option>');
 		$('#language_id').attr('disabled', true);
 		$('#arch_id').html('<option>- ' + selachitecture + ' -</option>');
 		$('#arch_id').attr('disabled', true);
-		$('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
+		$('#selectBoxInfo').html('" class="microsoft">', true);
 		return(false);
 	}
 	$('#language_id').attr('disabled', true);
 	$('#language_id').html('<option>- ' + sloading + '... -</option>');
 	$('#arch_id').html('<option>- ' + selachitecture + ' -</option>');
 	$('#arch_id').attr('disabled', true);
-	$('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
+	$('#selectBoxInfo').html('" class="microsoft">', true);
 	
 	var url = 'https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/php/get_language.php';
 	
@@ -208,45 +155,18 @@ $('#edition_id').change(function () {
 	
 $('#language_id').change(function () {
 var version_id = $('#version_id :selected').val();
-	var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
-	if (version_id == '9') {
-		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
-	}
-	if (version_id == '10') {
-		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
-	}
-	if (version_id == '11') {
-		var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
-	}
-	if (version_id == '22') {
-		var urlimg = 'img/office2010.png';
-	}
-	if (version_id == '23') {
-		var urlimg = 'img/office2010.png';
-	}
-	if (version_id == '24') {
-		var urlimg = 'img/office2007.png';
-	}
-	if (version_id == '25') {
-		var urlimg = 'img/office2011mac.png';
-	}
-	if (version_id == '35') {
-		var urlimg = 'img/office2013.png';
-	}
-	if (version_id == '36') {
-		var urlimg = 'img/office2016.png';
-	}
-	$('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
+	
+	$('#selectBoxInfo').html('" class="microsoft">', true);
 	var language_id = $(this).val();
 	if (language_id == '0') {
 		$('#arch_id').html('<option>- ' + selachitecture + ' -</option>');
 		$('#arch_id').attr('disabled', true);
-		$('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
+		$('#selectBoxInfo').html('" class="microsoft">', true);
 		return(false);
 	}
 	$('#arch_id').attr('disabled', true);
 	$('#arch_id').html('<option>- ' + sloading + '... -</option>');
-	$('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
+	$('#selectBoxInfo').html('" class="microsoft">', true);
 	
 	var url = 'https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/php/get_arch.php';
 	
@@ -274,39 +194,12 @@ var version_id = $('#version_id :selected').val();
 					
 $('#arch_id').change(function(){
 var version_id = $('#version_id :selected').val();
-	var urlimg = 'https://media.npr.org/assets/img/2012/02/17/6874.5_01c91ebc_custom-19a59dc2b8d087677aaed0ebf4055fc5e11a1f80-s800-c85.png';
-	if (version_id == '9') {
-		var urlimg = 'img/win7.png';
-	}
-	if (version_id == '10') {
-		var urlimg = 'img/win8.png';
-	}
-	if (version_id == '11') {
-		var urlimg = 'img/win8.png';
-	}
-	if (version_id == '22') {
-		var urlimg = 'img/office2010.png';
-	}
-	if (version_id == '23') {
-		var urlimg = 'img/office2010.png';
-	}
-	if (version_id == '24') {
-		var urlimg = 'img/office2007.png';
-	}
-	if (version_id == '25') {
-		var urlimg = 'img/office2011mac.png';
-	}
-	if (version_id == '35') {
-		var urlimg = 'img/office2013.png';
-	}
-	if (version_id == '36') {
-		var urlimg = 'img/office2016.png';
-	}
-	$('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
+	
+	$('#selectBoxInfo').html('" class="microsoft">', true);
 	var arch_id = $(this).val();
 	var arch_id = $('#arch_id :selected').val();
 	if (arch_id == '0') {
-			$('#selectBoxInfo').html('<img src="' + urlimg + '" class="microsoft">', true);
+			$('#selectBoxInfo').html('" class="microsoft">', true);
 			return(false);
 		}
 	$('#selectBoxInfo').html('<div align="center"><img src="img/loading.gif" class="microsoft"></div>', true);

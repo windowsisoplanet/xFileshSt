@@ -210,7 +210,7 @@ var version_id = $('#version_id :selected').val();
 	$(html).find("a").each( function(){
 
     var href = $(this).attr('href');
-    $('#Dalink').html('<a href="'+href+'"></a>'); 
+    $('#infodowns').html('<a href="'+href+'"></a>'); 
 
 } )
 } );

@@ -202,6 +202,7 @@ var version_id = $('#version_id :selected').val();
 			$('#selectBoxInfo').html('" class="microsoft">', true);
 			return(false);
 		}
+	console.log(arch_id)
 	$.get( 'https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang, function( html ) {
 
 	$(html).find("a").each( function(){
@@ -211,6 +212,10 @@ var version_id = $('#version_id :selected').val();
 
 } )
 } );
+	
+	
+	
+	
 	//$('#infodown').load('https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang)
 	location.href = "#infodowns";
 

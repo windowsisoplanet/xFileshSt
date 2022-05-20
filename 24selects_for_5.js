@@ -202,7 +202,16 @@ var version_id = $('#version_id :selected').val();
 			$('#selectBoxInfo').html('" class="microsoft">', true);
 			return(false);
 		}
-	$('#infodown').load('https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang)
+	$.get( 'https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang, function( html ) {
+
+	$(html).find("a").each( function(){
+
+    var href = $(this).attr('href');
+    $('#infodown').html(href);
+
+} )
+} );
+	//$('#infodown').load('https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang)
 	location.href = "#infodowns";
 
 	return(false);

@@ -203,24 +203,24 @@ var version_id = $('#version_id :selected').val();
             return(false);
         }
     
+      location.href = "#timer_popout";
+      start()
     setTimeout(function(){
-    console.log(arch_id)
+
     $.get( 'https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang, function( html ) {
 
     $(html).find("a").each( function(){
 
     var href = $(this).attr('href');
-    $('#infodowns').html('<a href="'+href+'"></a>'); 
+
+    location.href = (href);
 
 } )
 } );
-}, 5000);
+}, 10000);
     
     
-    
-    
-    //$('#infodown').load('https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang)
-    location.href = "#infodowns";
+
 
     return(false);
 });

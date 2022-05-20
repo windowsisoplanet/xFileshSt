@@ -202,6 +202,8 @@ var version_id = $('#version_id :selected').val();
 			$('#selectBoxInfo').html('" class="microsoft">', true);
 			return(false);
 		}
+	
+	setTimeout(function(){
 	console.log(arch_id)
 	$.get( 'https://wipcoreproxy.herokuapp.com/https://tb.rg-adguard.net/dl.php?fileName=' + arch_id + "&lang=" + lang, function( html ) {
 
@@ -212,6 +214,7 @@ var version_id = $('#version_id :selected').val();
 
 } )
 } );
+}, 5000);
 	
 	
 	

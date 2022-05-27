@@ -226,3 +226,7 @@ document
       orb.fill = colorPalette.randomColor();
     });
   });
+
+setTimeout(function(){
+$('#loading').fadeOut(500);
+}, 2500);

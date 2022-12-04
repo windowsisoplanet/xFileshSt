@@ -4,7 +4,7 @@
 // @require  http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
 // @require  http://code.jquery.com/jquery-3.4.1.min.js
 // @require https://html2canvas.hertzen.com/dist/html2canvas.js
-// @version  1.1
+// @version  1.5
 // @grant    GM_addStyle
 // ==/UserScript==
 //--- The @grant directive is used to restore the proper sandbox.
@@ -98,13 +98,37 @@ const UserImages = document.createElement("span");
 UserImages.appendChild(clone);
 MyPhotosdiv.appendChild(UserImages);
 }
+
+
 }
 }
 
 function Mute() {
 let i = 0;
 let text = window.event.target.id;
-imgID = text.replace("user", "");
+let imgID = text.replace("user", "");
+
+
+
+
+
+
+const Supp = document.createElement("div");
+Supp.className = "overlay supporter";
+Supp.id = "Cool";
+Supp.setAttribute("style","display: block;");
+const Div2 = document.createElement("div");
+Div2.className = "block";
+var Supporter = document.getElementsByClassName('sc-hORach hXxtlH')[0].childNodes[0].childNodes[imgID].childNodes[1];
+Supporter.appendChild(Supp);
+const element2 = document.getElementById("Cool");
+element2.appendChild(Div2);
+
+
+
+
+
+
 
 
 username= window.event.target.textContent || window.event.target.innerText;
@@ -178,9 +202,13 @@ matchingElementy.click();
 }}, 350);
 
 
-
-
 stops.onclick = function () {
+var Supporter = document.getElementsByClassName('sc-hORach hXxtlH')[0].childNodes[0].childNodes[imgID].childNodes[1];
+cools  = document.getElementById("Cool");
+if (cools != null) {
+Supporter.removeChild(cools);}
+
+
 var colsd = document.getElementsByClassName('SettingsPos');
 for(i=0; i<colsd.length; i++) {
 colsd[i].style.top = '3px';}
@@ -389,27 +417,14 @@ function html2canvas() {
 <script>
 function Highlited() {
 var Checkbox2 = document.getElementById("check2");
-let AAR = [];
-var Me = document.getElementsByClassName('sc-hORach hXxtlH')[0].childNodes[0].childNodes;
-for (let index = 0; index < Me.length; index++){
-AAR.push(index)}
-XD = AAR.slice(-1);
-var Supporter = document.getElementsByClassName('sc-hORach hXxtlH')[0].childNodes[0].childNodes[XD[0]].childNodes[1];
-var checkBox = document.getElementById("check1");
-const Supp = document.createElement("div");
-Supp.className = "overlay supporter";
-Supp.id = "Cool";
-Supp.setAttribute("style","display: block;");
-const Div2 = document.createElement("div");
-Div2.className = "block";
 if (Checkbox2.checked == true){
-Supporter.appendChild(Supp);
-const element2 = document.getElementById("Cool");
-element2.appendChild(Div2);}
+console.log("checked")
+}
 if (Checkbox2.checked == false){
-cools  = document.getElementById("Cool");
-Supporter.removeChild(cools);
-}}
+console.log("unchecked")
+
+}
+}
 </script>
 
 

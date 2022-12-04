@@ -4,7 +4,7 @@
 // @require  http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
 // @require  http://code.jquery.com/jquery-3.4.1.min.js
 // @require https://html2canvas.hertzen.com/dist/html2canvas.js
-// @version  1.1
+// @version  1.0
 // @grant    GM_addStyle
 // ==/UserScript==
 //--- The @grant directive is used to restore the proper sandbox.

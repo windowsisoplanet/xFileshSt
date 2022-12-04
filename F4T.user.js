@@ -4,7 +4,7 @@
 // @require  http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
 // @require  http://code.jquery.com/jquery-3.4.1.min.js
 // @require https://html2canvas.hertzen.com/dist/html2canvas.js
-// @version  1.5
+// @version  1.6
 // @grant    GM_addStyle
 // ==/UserScript==
 //--- The @grant directive is used to restore the proper sandbox.
@@ -277,7 +277,7 @@ document.getElementById("stops").style.visibility = "hidden";
 document.getElementById("Notification").style.visibility = "hidden";
 var cols = document.getElementsByClassName('wrapping');
 for(i=0; i<cols.length; i++) {
-cols[i].style.left = '-300px';
+cols[i].style.left = '-1500px';
 }
 var colsdss = document.getElementsByClassName('SettingsPos');
 for(i=0; i<colsdss.length; i++) {

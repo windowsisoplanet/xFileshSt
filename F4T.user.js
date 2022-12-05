@@ -277,7 +277,7 @@ document.getElementById("stops").style.visibility = "hidden";
 document.getElementById("Notification").style.visibility = "hidden";
 var cols = document.getElementsByClassName('wrapping');
 for(i=0; i<cols.length; i++) {
-cols[i].style.left = '-1500px';
+cols[i].style.left = '-300px';
 }
 var colsdss = document.getElementsByClassName('SettingsPos');
 for(i=0; i<colsdss.length; i++) {
@@ -415,15 +415,37 @@ function html2canvas() {
 
 
 <script>
-function Highlited() {
-var Checkbox2 = document.getElementById("check2");
-if (Checkbox2.checked == true){
-console.log("checked")
-}
-if (Checkbox2.checked == false){
-console.log("unchecked")
+const Agian = setInterval(Ownershîp, 3000);
+const instantly = setTimeout(Ownershîp, 1);
+function Ownershîp() {
+document.getElementById("Loader").style.visibility = "hidden";
+
+
+
+var Num = [];
+var AllOfIT = document.getElementsByClassName('sc-hORach hXxtlH')[0].childNodes[0].childNodes;
+for (let index = 0; index < AllOfIT.length; index++){
+    Num.push(index);}
+var UserCount = Num.length - 1;
+document.getElementById("Loader").style.visibility = "hidden";
+var A =  document.getElementsByClassName('sc-hORach hXxtlH')[0].childNodes[0].childNodes[UserCount].childNodes[1];
+var B = A.innerHTML;
+let AAR = [];
+AAR.push(B);
+var text = (AAR[0]);
+var Owner = text.includes("Owner");
+var CoOwner = text.includes("Co-Owner");
+if (Owner === true) {
+document.getElementById("Loader").style.visibility = "visible";
+document.getElementById("Welcome").innerText = "";
+console.clear();
+clearInterval(Ownershîp);
 
 }
+else {
+	console.log("you are not owner");
+    document.getElementById("Welcome").style.visibility = "visible";
+    document.getElementById("Welcome").innerText = "Waiting for ownership";}
 }
 </script>
 
@@ -514,7 +536,7 @@ font-size: 14px;
 
 .Welcome-msg {
 position:fixed;
-top:35px;
+top:7px;
 left:5px;
 font-size: 14px;
 -webkit-animation: colorchange 1.5s infinite alternate;

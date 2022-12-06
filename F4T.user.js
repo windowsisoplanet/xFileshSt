@@ -4,13 +4,12 @@
 // @require  http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
 // @require  http://code.jquery.com/jquery-3.4.1.min.js
 // @require https://html2canvas.hertzen.com/dist/html2canvas.js
-// @version  1.6
+// @version  1.7
 // @grant    GM_addStyle
 // ==/UserScript==
 //--- The @grant directive is used to restore the proper sandbox.
 /* globals jQuery, $, waitForKeyElements */
 $("body").append ( `
-
 
 <div id="ShowRunner" class="wrapping">
 <div id="first">
@@ -20,6 +19,10 @@ $("body").append ( `
 <div id="third">
 </div>
 </div>
+
+
+
+<div id="UserInfo" role="document" class="ant-modal UserInfoClass" style="width: 520px;"><div tabindex="0" aria-hidden="true" style="width: 0px; height: 0px; overflow: hidden; outline: none;"></div><div class="ant-modal-content"><button id="UserInfoClose" type="button" aria-label="Close" class="ant-modal-close"><span class="ant-modal-close-x"><i aria-label="icon: close" class="anticon anticon-close ant-modal-close-icon"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="close" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg></i></span></button><div class="ant-modal-body"><div class="sc-TOsTZ ctcxOx"><div class="ant-row-flex ant-row-flex-space-around"><div class="ant-col"><span class="ant-avatar  ant-avatar-square ant-avatar-image  " style="width: 192px; height: 192px; line-height: 192px; font-size: 18px;"><img id="InfoImg" src="" referrerpolicy="no-referrer"></span></div><div class="ant-col" style="flex: 1 1 0%;"><div class="ant-row-flex ant-row-flex-middle" style="flex-direction: column; padding: 14px 20px 0px; height: 100%; min-width: 274px;"><div class="ant-col" style="flex: 1 1 0%;"><div id="ThisUserID" style="color: rgb(204, 204, 204); font-size: 0.8em;">ID: 5486998922</div><div class="ant-row-flex gutter8" style="margin-left: -4px; margin-right: -4px;"><div class="ant-col" style="padding-left: 4px; padding-right: 4px;"><div id="FollowersCount" style="color: rgb(204, 204, 204); font-size: 0.8em;">Followers: 183</div></div><div class="ant-col" style="padding-left: 4px; padding-right: 4px;"><div id="FriendsCount" style="color: rgb(204, 204, 204); font-size: 0.8em;">Friends: 34</div></div><div class="ant-col" style="padding-left: 4px; padding-right: 4px;"><div id="FollowingCount" style="color: rgb(204, 204, 204); font-size: 0.8em;">Following: 34</div></div></div><div id="UserNameGet" style="font-size: 1.5em;">Eliza</div></div><div class="ant-col" style="margin-top: 20px;"><div class="ant-row-flex gutter4" style="margin-left: -2px; margin-right: -2px;"><div class="ant-col" style="padding-left: 2px; padding-right: 2px;"></div><div class="ant-col" style="padding-left: 2px; padding-right: 2px;"></div></div></div></div></div></div></div></div><div class="ant-modal-footer"><div><button type="button" class="ant-btn" style="display: none;"><span>Cancel</span></button><button id="OKusers" type="button" class="ant-btn ant-btn-primary"><span>OK</span></button></div></div></div><div tabindex="0" aria-hidden="true" style="width: 0px; height: 0px; overflow: hidden; outline: none;"></div></div>
 <button id="stops" class="ant-btn ant-btn-sm" >Stop</button>
 <button id="Loader" class="ant-btn ant-btn-sm Refresh" onclick="ArrayNames(),OneTime()">Start</button>
 <button id="clear" class="ant-btn ant-btn-sm" onclick="clean()">Hide</button>
@@ -32,7 +35,39 @@ $("body").append ( `
 
 
 
+
+
+
 <script>
+document.getElementById("Loader").disabled = true;
+document.getElementById("Loader").innerText = "Fetching users.. Please wait";
+
+const IDINIT = setTimeout(IDGRAB, 500);
+function IDGRAB() {
+IDARR = [];
+var RoomLink = window.location.href.slice(26, 36);
+let xhr = new XMLHttpRequest();
+xhr.open("POST", "https://free4talk-sync.herokuapp.com/sync/get/free4talk/groups/?a=sync-get-free4talk-groups");
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.onreadystatechange = function () {
+if (xhr.readyState === 4) {
+var [first, second] = xhr.responseText.split(RoomLink);
+var last3 = first.slice(-200)
+
+
+var [third, fourth] = last3.split('","platform"');
+let ID = third.slice(-24)
+IDARR.push(ID);
+document.getElementById("Loader").disabled = false;
+document.getElementById("Loader").innerText = "Start";
+
+
+}};
+let doto = ('{"body":{}}');
+xhr.send(doto);
+}
+
 document.getElementById("clear").style.visibility = "hidden";
 document.getElementById("stops").style.visibility = "hidden";
 
@@ -43,8 +78,11 @@ const ImagesDiv = document.getElementById("first");
 
 const Loader = document.getElementById("Loader");
 Loader.addEventListener("click", WholeThing);
-const Recheck = setInterval(WholeThing, 3000);
+
+///////////////////////////////////////////////
+const Recheck = setInterval(WholeThing, 1500);
 const myTimeout = setTimeout(WholeThing, 1);
+///////////////////////////////////////////////
 
 function WholeThing() {
 document.getElementById("Loader").disabled = true;
@@ -56,6 +94,19 @@ var div1 = document.getElementById('first');
 var div2 = document.getElementById('second');
 var div3 = document.getElementById('third');
 
+
+let xhr = new XMLHttpRequest();
+xhr.open("POST", "https://free4talk-sync.herokuapp.com/sync/get/free4talk/groups/?a=sync-get-free4talk-groups");
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === 4) {
+
+const myObj = JSON.parse(xhr.responseText);
+var Clients = myObj["data"][IDARR]["clients"];
+
+console.log(myObj);
 while(div1.firstChild){
 div1.removeChild(div1.firstChild);}
 while(div2.firstChild){
@@ -63,66 +114,143 @@ div2.removeChild(div2.firstChild);}
 while(div3.firstChild){
 div3.removeChild(div3.firstChild);}
 
-var FullDiv = document.getElementsByClassName('sc-hORach hXxtlH')[0].childNodes[0].childNodes;
-for (let index = 0; index < FullDiv.length -1; index++){
 
-var UsernameClass = document.getElementsByClassName('sc-hORach hXxtlH')[0].childNodes[0].childNodes[index].childNodes[1].childNodes[2].childNodes[0];
-var Avatar = document.getElementsByClassName('sc-hORach hXxtlH')[0].childNodes[0].childNodes[index].childNodes[1].childNodes[1].childNodes[0];
-const clone = Avatar.cloneNode(true);
+
+
+
+///////////////////////////////////////////////
+
+for (let i = 0; i < Clients.length; i++) {
+var ConnectedPeers = Clients.length;
+
+///////////////////////////////////////////////
+
+
+var UsernameClass = Clients[i].name;
+
 const MyBtnBoxdiv = document.createElement("div");
-MyBtnBoxdiv.id = "Btnbox"+ index;
+MyBtnBoxdiv.id = "Btnbox"+ i;
 MyBtnBoxdiv.className = "Btnbox";
 ContainerDiv.appendChild(MyBtnBoxdiv);
+
 const MyButtons = document.createElement("button");
-MyButtons.innerHTML = UsernameClass.innerHTML;
-MyButtons.id = "user"+ index;
+MyButtons.innerHTML = Clients[i].name;
+MyButtons.id = "user"+ i;
 MyButtons.className = "ant-btnY";
 MyButtons.setAttribute("onclick","Mute()");
 MyBtnBoxdiv.appendChild(MyButtons);
+
 const MyIconBoxdiv = document.createElement("div");
-MyIconBoxdiv.id = "imgbox"+ index;
+MyIconBoxdiv.id = "imgbox"+ i;
 MyIconBoxdiv.className = "imgbox";
 MuteDiv.appendChild(MyIconBoxdiv);
+
 const MuteImg = document.createElement("img");
-MuteImg.id = "mutebox"+ index;
+MuteImg.id = "mutebox"+ i;
 MuteImg.className = "MT";
 MuteImg.setAttribute("src","https://cdn-icons-png.flaticon.com/512/9036/9036216.png");
 MuteImg.setAttribute("style","visibility: Hidden;");
 MyIconBoxdiv.appendChild(MuteImg);
+
 const MyPhotosdiv = document.createElement("div");
-MyPhotosdiv.id = "imgbox"+ index;
+MyPhotosdiv.id = "imgbox"+ i;
 MyPhotosdiv.className = "imgbox";
 ImagesDiv.appendChild(MyPhotosdiv);
 
-const UserImages = document.createElement("span");
-UserImages.appendChild(clone);
-MyPhotosdiv.appendChild(UserImages);
+const Span = document.createElement("span");
+Span.id = i;
+Span.className = "ant-avatar  ant-avatar-square ant-avatar-image";
+MyPhotosdiv.appendChild(Span);
+const SpanInnerImage = document.createElement("img");
+SpanInnerImage.id = i;
+SpanInnerImage.className = "ant-avatar  ant-avatar-square ant-avatar-image";
+SpanInnerImage.setAttribute("src",Clients[i].avatar );
+SpanInnerImage.setAttribute("referrerpolicy","no-referrer");
+Span.appendChild(SpanInnerImage);
+SpanInnerImage.setAttribute("onclick","info()");
+
+
 }
+
+  }};
+
+var chnuk1 = ('{"body":{"roomIds":["')
+var chnuk3 =('"]}}')
+let data = chnuk1 +IDARR+ chnuk3;
+xhr.send(data);
+
+
 
 
 }
 }
+//////////////////////////////////////
+function info() {
+//////////////////////////////////////
+let BABA = window.event.target.id;
+let xhr = new XMLHttpRequest();
+xhr.open("POST", "https://free4talk-sync.herokuapp.com/sync/get/free4talk/groups/?a=sync-get-free4talk-groups");
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === 4) {
+const myObj = JSON.parse(xhr.responseText);
+var Clients = myObj["data"][IDARR]["clients"];
+
+
+
+
+document.getElementById("InfoImg").src=Clients[BABA].avatar;
+document.getElementById("ThisUserID").innerText="ID: " +Clients[BABA].id;
+document.getElementById("UserNameGet").innerText=Clients[BABA].name;
+document.getElementById("FollowersCount").innerText="Followers: " +Clients[BABA].followers;
+document.getElementById("FriendsCount").innerText="Friends: " +Clients[BABA].friends;
+document.getElementById("FollowingCount").innerText="Following: " +Clients[BABA].following;
+
+var cols55 = document.getElementsByClassName('UserInfoClass');
+for(i=0; i<cols55.length; i++) {
+cols55[i].style.top = '30%';
+}
+
+
+
+
+}}
+var chnuk1 = ('{"body":{"roomIds":["')
+var chnuk3 =('"]}}')
+let data = chnuk1 +IDARR+ chnuk3;
+xhr.send(data);}
+//////////////////////////////////////
+//////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
 
 function Mute() {
 let i = 0;
 let text = window.event.target.id;
 let imgID = text.replace("user", "");
-
-
-
-
-
-
 const Supp = document.createElement("div");
 Supp.className = "overlay supporter";
 Supp.id = "Cool";
 Supp.setAttribute("style","display: block;");
 const Div2 = document.createElement("div");
 Div2.className = "block";
-var Supporter = document.getElementsByClassName('sc-hORach hXxtlH')[0].childNodes[0].childNodes[imgID].childNodes[1];
-Supporter.appendChild(Supp);
-const element2 = document.getElementById("Cool");
-element2.appendChild(Div2);
+
+
+/////var Supporter = document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes[imgID].childNodes[1];
+//////Supporter.appendChild(Supp);
+///////const element2 = document.getElementById("Cool");
+///////element2.appendChild(Div2);
 
 
 
@@ -195,7 +323,7 @@ document.getElementById(UserIDArray).disabled = true;}
 var xMuteClicking = setInterval(function(xMuteClicking){
 var xpathy = '//div[text()="'+username+'" and @class="blind"]/../span[text()=" Mute" ]/..';
 var matchingElementy = document.evaluate(xpathy, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-var Unmute = document.getElementsByClassName('sc-hORach hXxtlH')[0].childNodes[0].childNodes[imgID].childNodes[1].childNodes[4].childNodes[0].innerHTML
+var Unmute = document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes[imgID].childNodes[1].childNodes[4].childNodes[0].innerHTML
 var long = Unmute.length
 if (long < 10) {
 matchingElementy.click();
@@ -203,10 +331,10 @@ matchingElementy.click();
 
 
 stops.onclick = function () {
-var Supporter = document.getElementsByClassName('sc-hORach hXxtlH')[0].childNodes[0].childNodes[imgID].childNodes[1];
-cools  = document.getElementById("Cool");
-if (cools != null) {
-Supporter.removeChild(cools);}
+/////var Supporter = document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes[imgID].childNodes[1];
+////cools  = document.getElementById("Cool");
+/////if (cools != null) {
+/////Supporter.removeChild(cools);}
 
 
 var colsd = document.getElementsByClassName('SettingsPos');
@@ -245,7 +373,6 @@ colsd[i].style.top = '-100px';}
 
 document.getElementById("Notification").style.visibility = "hidden";
 document.getElementById("Notification").innerText = "";
-/////document.getElementById(imgID).style.visibility = "hidden";
 var element = document.getElementById("stops");
 document.getElementById("stops").style.visibility = "hidden";
 document.getElementById("clear").disabled = false;
@@ -290,7 +417,7 @@ document.getElementById("clear").innerText = "Hide";
 document.getElementById("Notification").style.visibility = "visible";
 const audio = new Audio("https://assets.mixkit.co/sfx/download/mixkit-happy-bell-alert-601.wav");
 audio.play();
-   var cols = document.getElementsByClassName('wrapping');
+var cols = document.getElementsByClassName('wrapping');
 for(i=0; i<cols.length; i++) {
 cols[i].style.left = '7px';
 }
@@ -330,9 +457,6 @@ else {
 Restores();}}
 
 
-function sound() {
-
-}
 
 
 </script>
@@ -394,41 +518,36 @@ update.onclick = function () {
 app = window.open('https://github.com/windowsisoplanet/xFileshSt/raw/main/F4T.user.js');
 app.close();
 }
-
-</script>
-
-
-<script>
-function html2canvas() {
-    var scriptElement = document.createElement( "script" );
-    scriptElement.type = "text/javascript";
-    scriptElement.src = "https://html2canvas.hertzen.com/dist/html2canvas.js";
-    document.body.appendChild( scriptElement );
+UserInfoClose.onclick = function () {
+var cols55 = document.getElementsByClassName('UserInfoClass');
+for(i=0; i<cols55.length; i++) {
+cols55[i].style.top = '-200%';
+}
+}
+OKusers.onclick = function () {
+var cols55 = document.getElementsByClassName('UserInfoClass');
+for(i=0; i<cols55.length; i++) {
+cols55[i].style.top = '-200%';
+}
 }
 
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-alpha1/html2canvas.js">
-</script>
-
 
 
 
 
 <script>
-const Agian = setInterval(Ownershîp, 3000);
-const instantly = setTimeout(Ownershîp, 1);
+/////////const Agian = setInterval(Ownershîp, 3000);
+/////////const instantly = setTimeout(Ownershîp, 1);
 function Ownershîp() {
 document.getElementById("Loader").style.visibility = "hidden";
-
-
-
 var Num = [];
-var AllOfIT = document.getElementsByClassName('sc-hORach hXxtlH')[0].childNodes[0].childNodes;
+var AllOfIT = document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes;
 for (let index = 0; index < AllOfIT.length; index++){
     Num.push(index);}
 var UserCount = Num.length - 1;
 document.getElementById("Loader").style.visibility = "hidden";
-var A =  document.getElementsByClassName('sc-hORach hXxtlH')[0].childNodes[0].childNodes[UserCount].childNodes[1];
+var A =  document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes[UserCount].childNodes[1];
 var B = A.innerHTML;
 let AAR = [];
 AAR.push(B);
@@ -467,6 +586,16 @@ transition: top 0.7s;
 top: 3px;
 left: 45px;
 }
+
+.UserInfoClass {
+position: fixed;
+transition: top 0.7s;
+top: -200%;
+left: 30%;
+}
+
+
+
 
 .slide {
 
@@ -683,6 +812,11 @@ GM_addStyle ( "                         \
         position:       fixed;          \
         top:            7px;\
         left:           8px;\
+    }    \
+#followers {                         \
+        position:       fixed;          \
+        top:            7px;\
+        left:           80px;\
     }    \
 #startBTN {                         \
         position:       fixed;          \

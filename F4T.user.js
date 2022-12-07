@@ -1,28 +1,29 @@
 // ==UserScript==
-// @name     F4T Dictator
+// @name     Free4talk Dictator
 // @include  https://www.free4talk.com/room/*
 // @require  http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
 // @require  http://code.jquery.com/jquery-3.4.1.min.js
 // @require https://html2canvas.hertzen.com/dist/html2canvas.js
-// @version  1.9
+// @version  2.0
 // @grant    GM_addStyle
 // ==/UserScript==
 //--- The @grant directive is used to restore the proper sandbox.
 /* globals jQuery, $, waitForKeyElements */
 $("body").append ( `
 
+
 <div id="ShowRunner" class="wrapping">
+
 <div id="first">
 </div>
 <div id="second">
 </div>
 <div id="third">
 </div>
+
 </div>
+<div id="UserInfo" role="document" class="ant-modal UserInfoClass" style="width: 520px;"><div tabindex="0" aria-hidden="true" style="width: 0px; height: 0px; overflow: hidden; outline: none;"></div><div class="ant-modal-content"><button id="UserInfoClose" type="button" aria-label="Close" class="ant-modal-close"><span class="ant-modal-close-x"><i aria-label="icon: close" class="anticon anticon-close ant-modal-close-icon"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="close" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg></i></span></button><div class="ant-modal-body"><div class="sc-TOsTZ ctcxOx"><div class="ant-row-flex ant-row-flex-space-around"><div class="ant-col"><span class="ant-avatar  ant-avatar-square ant-avatar-image  " style="width: 192px; height: 192px; line-height: 192px; font-size: 18px;"><img id="InfoImg" src="" referrerpolicy="no-referrer"></span></div><div class="ant-col" style="flex: 1 1 0%;"><div class="ant-row-flex ant-row-flex-middle" style="flex-direction: column; padding: 14px 20px 0px; height: 100%; min-width: 274px;"><div class="ant-col" style="flex: 1 1 0%;"><div id="ThisUserID" style="color: rgb(204, 204, 204); font-size: 0.8em;">ID: 5486998922</div><div class="ant-row-flex gutter8" style="margin-left: -4px; margin-right: -4px;"><div class="ant-col" style="padding-left: 4px; padding-right: 4px;"><div id="FollowersCount" style="color: rgb(204, 204, 204); font-size: 0.8em;">Followers: 183</div></div><div class="ant-col" style="padding-left: 4px; padding-right: 4px;"><div id="FriendsCount" style="color: rgb(204, 204, 204); font-size: 0.8em;">Friends: 34</div></div><div class="ant-col" style="padding-left: 4px; padding-right: 4px;"><div id="FollowingCount" style="color: rgb(204, 204, 204); font-size: 0.8em;">Following: 34</div></div></div><div id="UserNameGet" style="font-size: 1.5em;">Eliza</div></div><div class="ant-col" style="margin-top: 20px;"><div class="ant-row-flex gutter4" style="margin-left: -2px; margin-right: -2px;"><div class="ant-col" style="padding-left: 2px; padding-right: 2px;"></div><div class="ant-col" style="padding-left: 2px; padding-right: 2px;"></div></div></div></div></div></div></div></div><div class="ant-modal-footer"><div><button type="button" class="ant-btn" style="display: none;"><span>Cancel</span></button><button id="OKusers" type="button" class="ant-btn ant-btn-primary"><span>Close</span></button></div></div></div><div tabindex="0" aria-hidden="true" style="width: 0px; height: 0px; overflow: hidden; outline: none;"></div></div>
 
-
-
-<div id="UserInfo" role="document" class="ant-modal UserInfoClass" style="width: 520px;"><div tabindex="0" aria-hidden="true" style="width: 0px; height: 0px; overflow: hidden; outline: none;"></div><div class="ant-modal-content"><button id="UserInfoClose" type="button" aria-label="Close" class="ant-modal-close"><span class="ant-modal-close-x"><i aria-label="icon: close" class="anticon anticon-close ant-modal-close-icon"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="close" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg></i></span></button><div class="ant-modal-body"><div class="sc-TOsTZ ctcxOx"><div class="ant-row-flex ant-row-flex-space-around"><div class="ant-col"><span class="ant-avatar  ant-avatar-square ant-avatar-image  " style="width: 192px; height: 192px; line-height: 192px; font-size: 18px;"><img id="InfoImg" src="" referrerpolicy="no-referrer"></span></div><div class="ant-col" style="flex: 1 1 0%;"><div class="ant-row-flex ant-row-flex-middle" style="flex-direction: column; padding: 14px 20px 0px; height: 100%; min-width: 274px;"><div class="ant-col" style="flex: 1 1 0%;"><div id="ThisUserID" style="color: rgb(204, 204, 204); font-size: 0.8em;">ID: 5486998922</div><div class="ant-row-flex gutter8" style="margin-left: -4px; margin-right: -4px;"><div class="ant-col" style="padding-left: 4px; padding-right: 4px;"><div id="FollowersCount" style="color: rgb(204, 204, 204); font-size: 0.8em;">Followers: 183</div></div><div class="ant-col" style="padding-left: 4px; padding-right: 4px;"><div id="FriendsCount" style="color: rgb(204, 204, 204); font-size: 0.8em;">Friends: 34</div></div><div class="ant-col" style="padding-left: 4px; padding-right: 4px;"><div id="FollowingCount" style="color: rgb(204, 204, 204); font-size: 0.8em;">Following: 34</div></div></div><div id="UserNameGet" style="font-size: 1.5em;">Eliza</div></div><div class="ant-col" style="margin-top: 20px;"><div class="ant-row-flex gutter4" style="margin-left: -2px; margin-right: -2px;"><div class="ant-col" style="padding-left: 2px; padding-right: 2px;"></div><div class="ant-col" style="padding-left: 2px; padding-right: 2px;"></div></div></div></div></div></div></div></div><div class="ant-modal-footer"><div><button type="button" class="ant-btn" style="display: none;"><span>Cancel</span></button><button id="OKusers" type="button" class="ant-btn ant-btn-primary"><span>OK</span></button></div></div></div><div tabindex="0" aria-hidden="true" style="width: 0px; height: 0px; overflow: hidden; outline: none;"></div></div>
 <button id="stops" class="ant-btn ant-btn-sm" >Stop</button>
 <button id="Loader" class="ant-btn ant-btn-sm Refresh" onclick="ArrayNames(),OneTime()">Start</button>
 <button id="clear" class="ant-btn ant-btn-sm" onclick="clean()">Hide</button>
@@ -30,17 +31,21 @@ $("body").append ( `
 <p id="Welcome"  class="Welcome-msg"></p>
 <div class="ant-popover ant-popover-placement-top ConfirmationClass"><div class="ant-popover-content"><div class="ant-popover-arrow"></div><div class="ant-popover-inner" role="tooltip"><div><div class="ant-popover-inner-content "><div class="ant-popover-message"><i aria-label="icon: exclamation-circle" class="anticon anticon-exclamation-circle"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="exclamation-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm-32 232c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v272c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V296zm32 440a48.01 48.01 0 0 1 0-96 48.01 48.01 0 0 1 0 96z"></path></svg></i><div class="ant-popover-message-title"><div id="Confirm-name" style="max-width: 320px;">ADAM was trying to send messages, however, they got deleted. Do you want to see them?</div></div></div><div class="ant-popover-buttons"><button type="button" id="cancel" class="ant-btn ant-btn-sm"><span>Cancel</span></button><button type="button" id="ShowIt" class="ant-btn ant-btn-primary ant-btn-sm"><span>Show me</span></button></div></div></div></div></div></div></div>
 <div class="ant-popover ant-popover-placement-top MessagesClass"><div class="ant-popover-content"><div class="ant-popover-arrow"></div><div id="" class="ant-popover-inner MessagesClass" role="tooltip"><div><div class="ant-popover-inner-content "><h4 id="PreMessages" class="ant-typography"></h4><div id="" class="ant-popover-message"></div><div id="" class="ant-popover-message"><span id="" class="ant-typography"></span><div id="XXXX" class="ant-col "><span></span></div><div id="" class="ant-popover-message"></div></div></div></div></div></div><div class="ant-popover-buttons"><button type="button" aria-label="Close" id="CloseDialogue" class="ant-modal-close"><span class="ant-modal-close-x"><i aria-label="icon: close" class="anticon anticon-close ant-modal-close-icon"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="close" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg></i></span></button></div>
-<div id="Setting-div" role="document" class="ant-modal settings" style="width: 520px; transform-origin: 820px 80.75px;"><div tabindex="0" aria-hidden="true" style="width: 0px; height: 0px; overflow: hidden; outline: none;"></div><div class="ant-modal-content"><button id="settingsclose" type="button" aria-label="Close" class="ant-modal-close"><span class="ant-modal-close-x"><i aria-label="icon: close" class="anticon anticon-close ant-modal-close-icon"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="close" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg></i></span></button><div class="ant-modal-body"><div class="ant-spin-nested-loading"><div class="ant-spin-container"><div class="sc-elJkPf jZeGZd"><form autocomplete="off" class="ant-form ant-form-horizontal ant-form-hide-required-mark"><div class="ant-tabs ant-tabs-top ant-tabs-small ant-tabs-line"><div role="tablist" class="ant-tabs-bar ant-tabs-top-bar ant-tabs-small-bar" tabindex="0"><div class="ant-tabs-nav-container"><span unselectable="unselectable" class="ant-tabs-tab-prev ant-tabs-tab-btn-disabled"></span><div class="ant-tabs-nav-wrap"><div class="ant-tabs-nav-scroll"><div class="ant-tabs-nav ant-tabs-nav-animated"><div><div class="ant-tabs-tab-active ant-tabs-tab"><h1 class="SettingsText">Free4Talk Dictator Settings</h1></div></div></div></div></div></div><div tabindex="0" role="presentation" style="width: 0px; height: 0px; overflow: hidden; position: absolute;"></div><div class="ant-tabs-content ant-tabs-content-animated ant-tabs-top-content" style="margin-left: 0%;"><div role="tabpanel" aria-hidden="false" class="ant-tabs-tabpane ant-tabs-tabpane-active" style="min-height: 280px;"><div tabindex="0" role="presentation" style="width: 0px; height: 0px; overflow: hidden; position: absolute;"></div><div class="ant-row ant-form-item"><div class="ant-col ant-form-item-control-wrapper"><div class="ant-form-item-control"></div></div></div><div class="ant-row-flex ant-row-flex-space-between ant-row-flex-middle features" style="margin-left: -8px; margin-right: -8px;"><div class="ant-col" style="padding-left: 8px; padding-right: 8px;"><div class="ant-row ant-form-item"><div class="ant-col ant-form-item-label"><label for="SettingsForm_noMic" class="ant-form-item-no-colon" title="Sound effects">Sound effects</label></div><div class="ant-col ant-form-item-control-wrapper"><label class="switch"><input id="check0" type="checkbox" checked=""><span class="slider round"></span></label></div></div></div><div class="ant-col" style="padding-left: 8px; padding-right: 8px;"><div class="ant-row ant-form-item"><div class="ant-col ant-form-item-label"><label for="SettingsForm_noCam" class="ant-form-item-no-colon" title="BROKEN DONT USE">BROKEN DONT USE</label></div><div class="ant-col ant-form-item-control-wrapper"><label class="switch"><input id="check1" type="checkbox" ><span class="slider round"></span></label></div></div></div><div class="ant-col" style="padding-left: 8px; padding-right: 8px;"><div class="ant-row ant-form-item"><div class="ant-col ant-form-item-label"><label for="SettingsForm_noEM" class="ant-form-item-no-colon" title="User Badge">User Badge</label></div><div class="ant-col ant-form-item-control-wrapper"><label class="switch"><input id="check2" onchange="Highlited()" type="checkbox"><span class="slider round"></span></label></div></div></div><div class="ant-col" style="padding-left: 8px; padding-right: 8px;"><div class="ant-row ant-form-item"><div class="ant-col ant-form-item-label"><label for="SettingsForm_noST" class="ant-form-item-no-colon" title=""></label></div><div class="ant-col ant-form-item-control-wrapper"><div class="ant-form-item-control has-success"><span class="ant-form-item-children"><button id="update" type="button" class="ant-btn no-border ant-btn-primary ant-btn-block" style=""><span class="">check for updates</span></button></span></div></div></div></div></div></div></div></div></div></form></div></div></div></div></div></div>
+<div id="Setting-div" role="document" class="ant-modal settings" style="width: 520px; transform-origin: 820px 80.75px;"><div tabindex="0" aria-hidden="true" style="width: 0px; height: 0px; overflow: hidden; outline: none;"></div><div class="ant-modal-content"><button id="settingsclose" type="button" aria-label="Close" class="ant-modal-close"><span class="ant-modal-close-x"><i aria-label="icon: close" class="anticon anticon-close ant-modal-close-icon"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="close" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg></i></span></button><div class="ant-modal-body"><div class="ant-spin-nested-loading"><div class="ant-spin-container"><div class="sc-elJkPf jZeGZd"><form autocomplete="off" class="ant-form ant-form-horizontal ant-form-hide-required-mark"><div class="ant-tabs ant-tabs-top ant-tabs-small ant-tabs-line"><div role="tablist" class="ant-tabs-bar ant-tabs-top-bar ant-tabs-small-bar" tabindex="0"><div class="ant-tabs-nav-container"><span unselectable="unselectable" class="ant-tabs-tab-prev ant-tabs-tab-btn-disabled"></span><div class="ant-tabs-nav-wrap"><div class="ant-tabs-nav-scroll"><div class="ant-tabs-nav ant-tabs-nav-animated"><div><div class="ant-tabs-tab-active ant-tabs-tab"><h1 class="SettingsText">Free4Talk Dictator Settings</h1></div></div></div></div></div></div><div tabindex="0" role="presentation" style="width: 0px; height: 0px; overflow: hidden; position: absolute;"></div><div class="ant-tabs-content ant-tabs-content-animated ant-tabs-top-content" style="margin-left: 0%;"><div role="tabpanel" aria-hidden="false" class="ant-tabs-tabpane ant-tabs-tabpane-active" style="min-height: 280px;"><div tabindex="0" role="presentation" style="width: 0px; height: 0px; overflow: hidden; position: absolute;"></div><div class="ant-row ant-form-item"><div class="ant-col ant-form-item-control-wrapper"><div class="ant-form-item-control"></div></div></div><div class="ant-row-flex ant-row-flex-space-between ant-row-flex-middle features" style="margin-left: -8px; margin-right: -8px;"><div class="ant-col" style="padding-left: 8px; padding-right: 8px;"><div class="ant-row ant-form-item"><div class="ant-col ant-form-item-label"><label for="SettingsForm_noMic" class="ant-form-item-no-colon" title="Sound effects">Sound effects</label></div><div class="ant-col ant-form-item-control-wrapper"><label class="switch"><input id="check0" type="checkbox" checked=""><span class="slider round"></span></label></div></div></div><div class="ant-col" style="padding-left: 8px; padding-right: 8px;"><div class="ant-row ant-form-item"><div class="ant-col ant-form-item-label"><label for="SettingsForm_noCam" class="ant-form-item-no-colon" title="Silent muting">Silent muting</label></div><div class="ant-col ant-form-item-control-wrapper"><label class="switch"><input id="check1" type="checkbox" ><span class="slider round"></span></label></div></div></div><div class="ant-col" style="padding-left: 8px; padding-right: 8px;"><div class="ant-row ant-form-item"><div class="ant-col ant-form-item-label"><label for="SettingsForm_noEM" class="ant-form-item-no-colon" title="User muting Badge">User muting Badge</label></div><div class="ant-col ant-form-item-control-wrapper"><label class="switch"><input id="check2" onchange="Highlited()" type="checkbox" checked><span class="slider round"></span></label></div></div></div><div class="ant-col" style="padding-left: 8px; padding-right: 8px;"><div class="ant-row ant-form-item"><div class="ant-col ant-form-item-label"><label for="SettingsForm_noST" class="ant-form-item-no-colon" title=""></label></div><div class="ant-col ant-form-item-control-wrapper"><div class="ant-form-item-control has-success"><span class="ant-form-item-children"><button id="update" type="button" class="ant-btn no-border ant-btn-primary ant-btn-block" style=""><span class="">check for updates</span></button></span></div></div></div></div></div></div></div></div></div></form></div></div></div></div></div></div>
 <button id="SettingsIcon" type="button" class="ant-btn ant-dropdown-trigger ant-btn-primary ant-btn-circle ant-btn-icon-only ant-btn-background-ghost SettingsPos" style="border: none; visibility: visible;"><i aria-label="icon: setting" class="anticon anticon-setting"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="setting" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M924.8 625.7l-65.5-56c3.1-19 4.7-38.4 4.7-57.8s-1.6-38.8-4.7-57.8l65.5-56a32.03 32.03 0 0 0 9.3-35.2l-.9-2.6a443.74 443.74 0 0 0-79.7-137.9l-1.8-2.1a32.12 32.12 0 0 0-35.1-9.5l-81.3 28.9c-30-24.6-63.5-44-99.7-57.6l-15.7-85a32.05 32.05 0 0 0-25.8-25.7l-2.7-.5c-52.1-9.4-106.9-9.4-159 0l-2.7.5a32.05 32.05 0 0 0-25.8 25.7l-15.8 85.4a351.86 351.86 0 0 0-99 57.4l-81.9-29.1a32 32 0 0 0-35.1 9.5l-1.8 2.1a446.02 446.02 0 0 0-79.7 137.9l-.9 2.6c-4.5 12.5-.8 26.5 9.3 35.2l66.3 56.6c-3.1 18.8-4.6 38-4.6 57.1 0 19.2 1.5 38.4 4.6 57.1L99 625.5a32.03 32.03 0 0 0-9.3 35.2l.9 2.6c18.1 50.4 44.9 96.9 79.7 137.9l1.8 2.1a32.12 32.12 0 0 0 35.1 9.5l81.9-29.1c29.8 24.5 63.1 43.9 99 57.4l15.8 85.4a32.05 32.05 0 0 0 25.8 25.7l2.7.5a449.4 449.4 0 0 0 159 0l2.7-.5a32.05 32.05 0 0 0 25.8-25.7l15.7-85a350 350 0 0 0 99.7-57.6l81.3 28.9a32 32 0 0 0 35.1-9.5l1.8-2.1c34.8-41.1 61.6-87.5 79.7-137.9l.9-2.6c4.5-12.3.8-26.3-9.3-35zM788.3 465.9c2.5 15.1 3.8 30.6 3.8 46.1s-1.3 31-3.8 46.1l-6.6 40.1 74.7 63.9a370.03 370.03 0 0 1-42.6 73.6L721 702.8l-31.4 25.8c-23.9 19.6-50.5 35-79.3 45.8l-38.1 14.3-17.9 97a377.5 377.5 0 0 1-85 0l-17.9-97.2-37.8-14.5c-28.5-10.8-55-26.2-78.7-45.7l-31.4-25.9-93.4 33.2c-17-22.9-31.2-47.6-42.6-73.6l75.5-64.5-6.5-40c-2.4-14.9-3.7-30.3-3.7-45.5 0-15.3 1.2-30.6 3.7-45.5l6.5-40-75.5-64.5c11.3-26.1 25.6-50.7 42.6-73.6l93.4 33.2 31.4-25.9c23.7-19.5 50.2-34.9 78.7-45.7l37.9-14.3 17.9-97.2c28.1-3.2 56.8-3.2 85 0l17.9 97 38.1 14.3c28.7 10.8 55.4 26.2 79.3 45.8l31.4 25.8 92.8-32.9c17 22.9 31.2 47.6 42.6 73.6L781.8 426l6.5 39.9zM512 326c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm79.2 255.2A111.6 111.6 0 0 1 512 614c-29.9 0-58-11.7-79.2-32.8A111.6 111.6 0 0 1 400 502c0-29.9 11.7-58 32.8-79.2C454 401.6 482.1 390 512 390c29.9 0 58 11.6 79.2 32.8A111.6 111.6 0 0 1 624 502c0 29.9-11.7 58-32.8 79.2z"></path></svg></i></button>
 
 
 
-
-
-
 <script>
-document.getElementById("Loader").disabled = true;
+document.getElementById("clear").style.visibility = "hidden";
+document.getElementById("stops").style.visibility = "hidden";
 document.getElementById("Loader").innerText = "Fetching users.. Please wait";
+document.getElementById("Loader").disabled = true;
+
+
+
+///////////////////////////////////////////////
+
 
 const IDINIT = setTimeout(IDGRAB, 500);
 function IDGRAB() {
@@ -52,6 +57,7 @@ xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.onreadystatechange = function () {
 if (xhr.readyState === 4) {
+
 var [first, second] = xhr.responseText.split(RoomLink);
 var last3 = first.slice(-200)
 
@@ -67,22 +73,22 @@ document.getElementById("Loader").innerText = "Start";
 let doto = ('{"body":{}}');
 xhr.send(doto);
 }
+///////////////////////////////////////////////
 
-document.getElementById("clear").style.visibility = "hidden";
-document.getElementById("stops").style.visibility = "hidden";
+
+
 
 function ArrayNames() {
+
+const ImagesDiv = document.getElementById("first");
 const ContainerDiv = document.getElementById("second");
 const MuteDiv = document.getElementById("third");
-const ImagesDiv = document.getElementById("first");
+
 
 const Loader = document.getElementById("Loader");
 Loader.addEventListener("click", WholeThing);
-
-///////////////////////////////////////////////
-const Recheck = setInterval(WholeThing, 1500);
+const Recheck = setInterval(WholeThing, 2000);
 const myTimeout = setTimeout(WholeThing, 1);
-///////////////////////////////////////////////
 
 function WholeThing() {
 document.getElementById("Loader").disabled = true;
@@ -94,18 +100,6 @@ var div1 = document.getElementById('first');
 var div2 = document.getElementById('second');
 var div3 = document.getElementById('third');
 
-
-let xhr = new XMLHttpRequest();
-xhr.open("POST", "https://free4talk-sync.herokuapp.com/sync/get/free4talk/groups/?a=sync-get-free4talk-groups");
-xhr.setRequestHeader("Accept", "application/json");
-xhr.setRequestHeader("Content-Type", "application/json");
-
-xhr.onreadystatechange = function () {
-  if (xhr.readyState === 4) {
-
-const myObj = JSON.parse(xhr.responseText);
-var Clients = myObj["data"][IDARR]["clients"];
-
 while(div1.firstChild){
 div1.removeChild(div1.firstChild);}
 while(div2.firstChild){
@@ -113,80 +107,68 @@ div2.removeChild(div2.firstChild);}
 while(div3.firstChild){
 div3.removeChild(div3.firstChild);}
 
+var FullDiv = document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes;
+for (let index = 0; index < FullDiv.length -1; index++){
 
+var UsernameClass = document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes[index].childNodes[1].childNodes[2].childNodes[0];
+var Avatar = document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes[index].childNodes[1].childNodes[1].childNodes[0];
+const clone = Avatar.cloneNode(true);
 
 
 
 ///////////////////////////////////////////////
+const MyPhotosdiv = document.createElement("div");
+MyPhotosdiv.id = UsernameClass.innerHTML;
+MyPhotosdiv.className = "imgbox";
+MyPhotosdiv.setAttribute("onclick","select(this)");
 
-for (let i = 0; i < Clients.length; i++) {
-var ConnectedPeers = Clients.length;
 
+
+
+ImagesDiv.appendChild(MyPhotosdiv);
+MyPhotosdiv.appendChild(clone);
 ///////////////////////////////////////////////
 
-
-var UsernameClass = Clients[i].name;
-
+///////////////////////////////////////////////
 const MyBtnBoxdiv = document.createElement("div");
-MyBtnBoxdiv.id = "Btnbox"+ i;
+MyBtnBoxdiv.id = "Btnbox"+ index;
 MyBtnBoxdiv.className = "Btnbox";
 ContainerDiv.appendChild(MyBtnBoxdiv);
+///////////////////////////////////////////////
 
+///////////////////////////////////////////////
 const MyButtons = document.createElement("button");
-MyButtons.innerHTML = Clients[i].name;
-MyButtons.id = "user"+ i;
+MyButtons.innerHTML = UsernameClass.innerHTML;
+MyButtons.id = "user"+ index;
 MyButtons.className = "ant-btnY";
 MyButtons.setAttribute("onclick","Mute()");
 MyBtnBoxdiv.appendChild(MyButtons);
+///////////////////////////////////////////////
 
+///////////////////////////////////////////////
 const MyIconBoxdiv = document.createElement("div");
-MyIconBoxdiv.id = "imgbox"+ i;
+MyIconBoxdiv.id = "imgbox"+ index;
 MyIconBoxdiv.className = "imgbox";
 MuteDiv.appendChild(MyIconBoxdiv);
+///////////////////////////////////////////////
 
-const MuteImg = document.createElement("img");
-MuteImg.id = "mutebox"+ i;
-MuteImg.className = "MT";
-MuteImg.setAttribute("src","https://cdn-icons-png.flaticon.com/512/9036/9036216.png");
-MuteImg.setAttribute("style","visibility: Hidden;");
-MyIconBoxdiv.appendChild(MuteImg);
+///////////////////////////////////////////////
 
-const MyPhotosdiv = document.createElement("div");
-MyPhotosdiv.id = "imgbox"+ i;
-MyPhotosdiv.className = "imgbox";
-ImagesDiv.appendChild(MyPhotosdiv);
-
-const Span = document.createElement("span");
-Span.id = i;
-Span.className = "ant-avatar  ant-avatar-square ant-avatar-image";
-MyPhotosdiv.appendChild(Span);
-const SpanInnerImage = document.createElement("img");
-SpanInnerImage.id = i;
-SpanInnerImage.className = "ant-avatar  ant-avatar-square ant-avatar-image";
-SpanInnerImage.setAttribute("src",Clients[i].avatar );
-SpanInnerImage.setAttribute("referrerpolicy","no-referrer");
-Span.appendChild(SpanInnerImage);
-SpanInnerImage.setAttribute("onclick","info()");
+///////////////////////////////////////////////
 
 
-}
-
-  }};
-
-var chnuk1 = ('{"body":{"roomIds":["')
-var chnuk3 =('"]}}')
-let data = chnuk1 +IDARR+ chnuk3;
-xhr.send(data);
 
 
 
 
 }
+
+
 }
-//////////////////////////////////////
-function info() {
-//////////////////////////////////////
-let BABA = window.event.target.id;
+}
+
+function select(ele) {
+let BABA = ele.id;
 let xhr = new XMLHttpRequest();
 xhr.open("POST", "https://free4talk-sync.herokuapp.com/sync/get/free4talk/groups/?a=sync-get-free4talk-groups");
 xhr.setRequestHeader("Accept", "application/json");
@@ -196,15 +178,15 @@ xhr.onreadystatechange = function () {
 const myObj = JSON.parse(xhr.responseText);
 var Clients = myObj["data"][IDARR]["clients"];
 
+Clients.find(x => x.name === BABA).avatar;
 
 
-
-document.getElementById("InfoImg").src=Clients[BABA].avatar;
-document.getElementById("ThisUserID").innerText="ID: " +Clients[BABA].id;
-document.getElementById("UserNameGet").innerText=Clients[BABA].name;
-document.getElementById("FollowersCount").innerText="Followers: " +Clients[BABA].followers;
-document.getElementById("FriendsCount").innerText="Friends: " +Clients[BABA].friends;
-document.getElementById("FollowingCount").innerText="Following: " +Clients[BABA].following;
+document.getElementById("InfoImg").src=Clients.find(x => x.name === BABA).avatar;
+document.getElementById("ThisUserID").innerText="ID: " +Clients.find(x => x.name === BABA).id;
+document.getElementById("UserNameGet").innerText=Clients.find(x => x.name === BABA).name;
+document.getElementById("FollowersCount").innerText="Followers: " +Clients.find(x => x.name === BABA).followers;
+document.getElementById("FriendsCount").innerText="Friends: " +Clients.find(x => x.name === BABA).friends;
+document.getElementById("FollowingCount").innerText="Following: " +Clients.find(x => x.name === BABA).following;
 
 var cols55 = document.getElementsByClassName('UserInfoClass');
 for(i=0; i<cols55.length; i++) {
@@ -214,23 +196,15 @@ cols55[i].style.top = '30%';
 
 
 
-}}
+
+}
+}
+
+
 var chnuk1 = ('{"body":{"roomIds":["')
 var chnuk3 =('"]}}')
 let data = chnuk1 +IDARR+ chnuk3;
 xhr.send(data);}
-//////////////////////////////////////
-//////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -238,18 +212,22 @@ function Mute() {
 let i = 0;
 let text = window.event.target.id;
 let imgID = text.replace("user", "");
+
+
+
+
+
+
 const Supp = document.createElement("div");
 Supp.className = "overlay supporter";
 Supp.id = "Cool";
 Supp.setAttribute("style","display: block;");
 const Div2 = document.createElement("div");
 Div2.className = "block";
-
-
-/////var Supporter = document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes[imgID].childNodes[1];
-//////Supporter.appendChild(Supp);
-///////const element2 = document.getElementById("Cool");
-///////element2.appendChild(Div2);
+var Supporter = document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes[imgID].childNodes[1];
+Supporter.appendChild(Supp);
+const element2 = document.getElementById("Cool");
+element2.appendChild(Div2);
 
 
 
@@ -259,7 +237,6 @@ Div2.className = "block";
 
 
 username= window.event.target.textContent || window.event.target.innerText;
-console.log (username);
 document.getElementById("Notification").style.visibility = "visible";
 document.getElementById("clear").disabled = true;
 document.getElementById("Notification").innerText = username+ " is being muted";
@@ -275,16 +252,34 @@ var xpathx = '//div[@class="name"]/*[text()="'+username+'"]/../../button[2]';
 var matchingElementx = document.evaluate(xpathx, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 matchingElementx.click();
 matchingElementx.click();
+
+
+
 var MuteClicking = setInterval(function(){
 var xpathy = '//div[text()="'+username+'" and @class="blind"]/../span[text()=" Mute" ]/..';
 var matchingElementy = document.evaluate(xpathy, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 var checkBox = document.getElementById("check1");
 if (checkBox.checked == true){
-}
-else {
+xMuteClicking();
+  } else {
    matchingElementy.click();
   }
-}, 600);
+}, 300);
+
+
+
+function xMuteClicking() {
+var xpathy = '//div[text()="'+username+'" and @class="blind"]/../span[text()=" Mute" ]/..';
+var matchingElementy = document.evaluate(xpathy, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+var Unmute = document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes[imgID].childNodes[1].childNodes[4].childNodes[0].innerHTML
+var long = Unmute.length
+if (long < 10) {
+matchingElementy.click();
+}
+}
+
+
+
 
 
 
@@ -301,7 +296,7 @@ ArrayOfTexts.push(matchingElement.innerText);
 matchingElement.click();
 var matchingElementy = document.evaluate(xpathd, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 matchingElementy.click();
-var matchingElementn = document.getElementsByClassName('ant-btn ant-btn-primary ant-btn-sm')[2];
+var matchingElementn = document.evaluate(xpathn, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 matchingElementn.click()
 }
 
@@ -321,21 +316,15 @@ var UserIDArray = "user"+i;
 document.getElementById(UserIDArray).disabled = true;}
 }, 100);
 
-var xMuteClicking = setInterval(function(xMuteClicking){
-var xpathy = '//div[text()="'+username+'" and @class="blind"]/../span[text()=" Mute" ]/..';
-var matchingElementy = document.evaluate(xpathy, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-var Unmute = document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes[imgID].childNodes[1].childNodes[4].childNodes[0].innerHTML
-var long = Unmute.length
-if (long < 10) {
-matchingElementy.click();
-}}, 350);
+
+
 
 
 stops.onclick = function () {
-/////var Supporter = document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes[imgID].childNodes[1];
-////cools  = document.getElementById("Cool");
-/////if (cools != null) {
-/////Supporter.removeChild(cools);}
+var Supporter = document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes[imgID].childNodes[1];
+cools  = document.getElementById("Cool");
+if (cools != null) {
+Supporter.removeChild(cools);}
 
 
 var colsd = document.getElementsByClassName('SettingsPos');
@@ -357,7 +346,7 @@ temp += ("<p> [" +h+":" +m+"] " +filteredArr[i]+ "</p>");}
 
 document.getElementById("XXXX").innerHTML = temp;
 
-if (filteredArr.length >=	1) {
+if (filteredArr.length >=   1) {
 var cols = document.getElementsByClassName('ConfirmationClass');
 for(i=0; i<cols.length; i++) {
 cols[i].style.top = '15px';}
@@ -374,6 +363,7 @@ colsd[i].style.top = '-100px';}
 
 document.getElementById("Notification").style.visibility = "hidden";
 document.getElementById("Notification").innerText = "";
+/////document.getElementById(imgID).style.visibility = "hidden";
 var element = document.getElementById("stops");
 document.getElementById("stops").style.visibility = "hidden";
 document.getElementById("clear").disabled = false;
@@ -381,7 +371,6 @@ clearInterval(MuteClicking);
 clearInterval(DeleteChat);
 clearInterval(Blocking);
 clearInterval(DisconnectBypass);
-clearInterval(xMuteClicking);
 
 
 stop = true;
@@ -405,7 +394,7 @@ document.getElementById("stops").style.visibility = "hidden";
 document.getElementById("Notification").style.visibility = "hidden";
 var cols = document.getElementsByClassName('wrapping');
 for(i=0; i<cols.length; i++) {
-cols[i].style.left = '-300px';
+cols[i].style.left = '-500px';
 }
 var colsdss = document.getElementsByClassName('SettingsPos');
 for(i=0; i<colsdss.length; i++) {
@@ -418,7 +407,7 @@ document.getElementById("clear").innerText = "Hide";
 document.getElementById("Notification").style.visibility = "visible";
 const audio = new Audio("https://assets.mixkit.co/sfx/download/mixkit-happy-bell-alert-601.wav");
 audio.play();
-var cols = document.getElementsByClassName('wrapping');
+   var cols = document.getElementsByClassName('wrapping');
 for(i=0; i<cols.length; i++) {
 cols[i].style.left = '7px';
 }
@@ -458,6 +447,9 @@ else {
 Restores();}}
 
 
+function sound() {
+
+}
 
 
 </script>
@@ -519,6 +511,7 @@ update.onclick = function () {
 app = window.open('https://github.com/windowsisoplanet/xFileshSt/raw/main/F4T.user.js');
 app.close();
 }
+
 UserInfoClose.onclick = function () {
 var cols55 = document.getElementsByClassName('UserInfoClass');
 for(i=0; i<cols55.length; i++) {
@@ -535,39 +528,21 @@ cols55[i].style.top = '-200%';
 </script>
 
 
-
-
 <script>
-/////////const Agian = setInterval(Ownershîp, 3000);
-/////////const instantly = setTimeout(Ownershîp, 1);
-function Ownershîp() {
-document.getElementById("Loader").style.visibility = "hidden";
-var Num = [];
-var AllOfIT = document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes;
-for (let index = 0; index < AllOfIT.length; index++){
-    Num.push(index);}
-var UserCount = Num.length - 1;
-document.getElementById("Loader").style.visibility = "hidden";
-var A =  document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes[UserCount].childNodes[1];
-var B = A.innerHTML;
-let AAR = [];
-AAR.push(B);
-var text = (AAR[0]);
-var Owner = text.includes("Owner");
-var CoOwner = text.includes("Co-Owner");
-if (Owner === true) {
-document.getElementById("Loader").style.visibility = "visible";
-document.getElementById("Welcome").innerText = "";
-console.clear();
-clearInterval(Ownershîp);
+function html2canvas() {
+    var scriptElement = document.createElement( "script" );
+    scriptElement.type = "text/javascript";
+    scriptElement.src = "https://html2canvas.hertzen.com/dist/html2canvas.js";
+    document.body.appendChild( scriptElement );
+}
 
-}
-else {
-	console.log("you are not owner");
-    document.getElementById("Welcome").style.visibility = "visible";
-    document.getElementById("Welcome").innerText = "Waiting for ownership";}
-}
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-alpha1/html2canvas.js">
+</script>
+
+
+
+
 
 
 
@@ -587,6 +562,12 @@ transition: top 0.7s;
 top: 3px;
 left: 45px;
 }
+
+
+
+
+
+
 
 .UserInfoClass {
 position: fixed;
@@ -616,7 +597,6 @@ left:250px;
   display: flex;
  position:fixed;
  top:45px;
- left:5px;
 transition: left 0.6s;
  width:30%;
 }
@@ -677,7 +657,7 @@ font-size: 14px;
   }
 
   30% {
-    color: 	#ffbf00;
+    color:  #ffbf00;
   }
     60% {
     color: ff9912;
@@ -718,20 +698,14 @@ font-size: 14px;
 #first {
     width:35px;
     height:250px;
-    top:1px;
-    left: 215px;
 }
 #second {
-    width:250px;
+    width:220px;
     height:250px;
-        top:1px;
-    left: 215px;
 }
 #third {
     width:30px;
     height:250px;
-        top:1px;
-    left: 315px;
 }
 .imgbox {
   width: 35px;
@@ -752,8 +726,8 @@ font-size: 14px;
     border: 1px solid black;
 }
 .MT {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
 }
 .switch {
   position: relative;
@@ -813,11 +787,6 @@ GM_addStyle ( "                         \
         position:       fixed;          \
         top:            7px;\
         left:           8px;\
-    }    \
-#followers {                         \
-        position:       fixed;          \
-        top:            7px;\
-        left:           80px;\
     }    \
 #startBTN {                         \
         position:       fixed;          \

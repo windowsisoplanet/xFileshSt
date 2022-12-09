@@ -3,13 +3,13 @@
 // @include  https://www.free4talk.com/room/*
 // @require  http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
 // @require  http://code.jquery.com/jquery-3.4.1.min.js
-// @version  2.2
+
+// @version  2.5
 // @grant    GM_addStyle
 // ==/UserScript==
 //--- The @grant directive is used to restore the proper sandbox.
 /* globals jQuery, $, waitForKeyElements */
 $("body").append ( `
-
 
 <div id="ShowRunner" class="wrapping">
 
@@ -29,13 +29,13 @@ $("body").append ( `
 <button id="Loader" class="ant-btn ant-btn-sm Refresh" onclick="ArrayNames(),OneTime()">Start</button>
 <button id="clear" class="ant-btn ant-btn-sm" onclick="clean()">Hide</button>
 <p id="Notification"  class="Not-Att"></p>
-<p id="Welcome"  class="Welcome-msg"></p>
+<p id="display-area"  class="Welcome-msg"></p>
 <div class="ant-popover ant-popover-placement-top ConfirmationClass"><div class="ant-popover-content"><div class="ant-popover-arrow"></div><div class="ant-popover-inner" role="tooltip"><div><div class="ant-popover-inner-content "><div class="ant-popover-message"><i aria-label="icon: exclamation-circle" class="anticon anticon-exclamation-circle"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="exclamation-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm-32 232c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v272c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V296zm32 440a48.01 48.01 0 0 1 0-96 48.01 48.01 0 0 1 0 96z"></path></svg></i><div class="ant-popover-message-title"><div id="Confirm-name" style="max-width: 320px;">ADAM was trying to send messages, however, they got deleted. Do you want to see them?</div></div></div><div class="ant-popover-buttons"><button type="button" id="cancel" class="ant-btn ant-btn-sm"><span>Cancel</span></button><button type="button" id="ShowIt" class="ant-btn ant-btn-primary ant-btn-sm"><span>Show me</span></button></div></div></div></div></div></div></div>
 
 
+<div role="document" class="ant-modal CanvasClass" style="width: 370px;"><div tabindex="0" aria-hidden="true" style="width: 0px; height: 0px; overflow: hidden; outline: none;"></div><div class="ant-modal-content"><button id="CloseDialogueCanvas" type="button" aria-label="Close" class="ant-modal-close"><span class="ant-modal-close-x"><i aria-label="icon: close" class="anticon anticon-close ant-modal-close-icon"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="close" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg></i></span></button><div class="ant-modal-body"><h4 id="" class="ant-typography">Evidence</h4><h4 class="" style="visibility: visible;">Right click and save the photo to use it.</h4><canvas id="myCanvas" width="317" height="678"></canvas><div id="" class="ant-typography"></div></div></div><div tabindex="0" aria-hidden="true" style="width: 0px; height: 0px; overflow: hidden; outline: none;"></div></div>
 
-
-<div role="document" class="ant-modal MessagesClass" style="width: 500px;"><div tabindex="0" aria-hidden="true" style="width: 0px; height: 0px; overflow: hidden; outline: none;"></div><div class="ant-modal-content"><button id="CloseDialogue" type="button" aria-label="Close" class="ant-modal-close"><span class="ant-modal-close-x"><i aria-label="icon: close" class="anticon anticon-close ant-modal-close-icon"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="close" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg></i></span></button><div class="ant-modal-body"><h4 id="PreMessages" class="ant-typography"></h4><h5 id="MsgsCounNum" class="ant-typography"></h5><div id="XXXX" class="ant-typography"></div></div></div><div tabindex="0" aria-hidden="true" style="width: 0px; height: 0px; overflow: hidden; outline: none;"></div></div>
+<div role="document" class="ant-modal MessagesClass" style="width: 500px;"><div tabindex="0" aria-hidden="true" style="width: 0px; height: 0px; overflow: hidden; outline: none;"></div><div class="ant-modal-content"><button id="CloseDialogue" type="button" aria-label="Close" class="ant-modal-close"><span class="ant-modal-close-x"><i aria-label="icon: close" class="anticon anticon-close ant-modal-close-icon"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="close" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg></i></span></button><div class="ant-modal-body"><h4 id="PreMessages" class="ant-typography"></h4><h5 id="MsgsCounNum" class="ant-typography ant-typography-warning"></h5><div><button type="button" id="Screenshot" class="ant-btn ant-btn-danger">Screenshot</span></button></div><div id="XXXX" class="ant-typography"></div></div></div><div tabindex="0" aria-hidden="true" style="width: 0px; height: 0px; overflow: hidden; outline: none;"></div></div>
 
 
 
@@ -45,6 +45,7 @@ $("body").append ( `
 
 
 <script>
+
 document.getElementById("clear").style.visibility = "hidden";
 document.getElementById("stops").style.visibility = "hidden";
 document.getElementById("Loader").innerText = "Fetching users.. Please wait";
@@ -56,6 +57,8 @@ document.getElementById("Loader").disabled = true;
 
 
 const IDINIT = setTimeout(IDGRAB, 500);
+
+
 function IDGRAB() {
 IDARR = [];
 var RoomLink = window.location.href.slice(26, 36);
@@ -101,7 +104,6 @@ const myTimeout = setTimeout(WholeThing, 1);
 function WholeThing() {
 document.getElementById("Loader").disabled = true;
 document.getElementById("Loader").style.visibility = "hidden";
-document.getElementById("Welcome").style.visibility = "hidden";
 
 
 var div1 = document.getElementById('first');
@@ -175,7 +177,8 @@ var cols55 = document.getElementsByClassName('UserInfoClass');
 for(i=0; i<cols55.length; i++) {
 cols55[i].style.top = '30%';
 }
-
+const audio = new Audio("https://proxy.notificationsounds.com/wake-up-tones/glassy-soft-knock-379/download/file-3d_silent-glass.mp3");
+audio.play();
 document.getElementById("InfoImg").src="https://wiregrassatstoneoak.com/views/site/images/global/icons/loading.gif";
 document.getElementById("ThisUserID").innerText="";
 document.getElementById("UserNameGet").innerText="Loading User .. Please wait";
@@ -193,7 +196,6 @@ xhr.onreadystatechange = function () {
   if (xhr.readyState === 4) {
 const myObj = JSON.parse(xhr.responseText);
 var Clients = myObj["data"][IDARR]["clients"];
-
 Clients.find(x => x.name === BABA).avatar;
 
 AvatarDel = Clients.find(x => x.name === BABA).avatar;
@@ -216,7 +218,17 @@ xhr.send(data);}
 
 
 
+
+
+
+
+
+
+
 function Mute() {
+
+
+
 document.getElementById("XXXX").innerHTML =""
 let i = 0;
 let text = window.event.target.id;
@@ -325,6 +337,27 @@ var UserIDArray = "user"+i;
 document.getElementById(UserIDArray).disabled = true;}
 }, 100);
 
+Avatar = [];
+let xhr = new XMLHttpRequest();
+xhr.open("POST", "https://free4talk-sync.herokuapp.com/sync/get/free4talk/groups/?a=sync-get-free4talk-groups");
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === 4) {
+const myObj = JSON.parse(xhr.responseText);
+var Clients = myObj["data"][IDARR]["clients"];
+Clients.find(x => x.name === username).avatar;
+Avatar.push(Clients.find(x => x.name === username).avatar);
+document.getElementById("InfoImg").src=Avatar[0];
+document.getElementById("InfoImg").src="https://i.postimg.cc/tCzghWY2/report.jpg";
+
+
+}}
+
+var chnuk1 = ('{"body":{"roomIds":["')
+var chnuk3 =('"]}}')
+let data = chnuk1 +IDARR+ chnuk3;
+xhr.send(data);
 
 
 
@@ -339,7 +372,7 @@ Supporter.removeChild(cools);}
 var colsd = document.getElementsByClassName('SettingsPos');
 for(i=0; i<colsd.length; i++) {
 colsd[i].style.top = '3px';}
-console.clear();
+/////console.clear();
 
 
 var filteredArr = ArrayOfTexts.filter(function(item, index) {
@@ -355,6 +388,15 @@ var  divClone;
 var temp = "";
 
 
+
+
+
+
+
+
+
+
+
 for(var i= 0; i < filteredArr.length; i++) {
 lol = i;
 temp += ('<div class="sc-exAgwC kvVgIg"><div class="sc-GMQeP gorwsu message   unverified"><div class="user"><div class="name primary"><span>'+username+'</span></div><div id="'+lol+'" class="avatar"></div><div class="time"><span>'+PMAM+'</span></div></div><div class="text"><div class="html"><p>'+filteredArr[i]+'</p></div><div class="fake-actions"></div></div></div></div>');
@@ -363,11 +405,109 @@ document.getElementById("XXXX").innerHTML = temp;
 document.getElementById("MsgsCounNum").innerText = "A total of " +filteredArr.length+ " messages have been deleted. A copy of each identical message is shown down below."
 
 
+
+
 for(var Y= 0; Y < filteredArr.length; Y++){
 var Ochild = document.getElementById(Y);
 divClone = myDivo.cloneNode(true);
 Ochild.appendChild(divClone);
  }
+
+
+
+var FullDiv = document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes;
+var UsernameClass = document.getElementsByClassName('sc-bMVAic kPErRA')[0].childNodes[0].childNodes[FullDiv.length -1].childNodes[1].childNodes[2].childNodes[0];
+
+var canvas = document.getElementById("myCanvas");
+var context = canvas.getContext("2d");
+var imageObj = new Image();
+var imageObj2 = new Image();
+
+
+
+imageObj.src = "https://i.postimg.cc/tCzghWY2/report.jpg";
+imageObj2.src = Avatar[0];
+canvas.height = 674;
+
+if (filteredArr.length == 1) {
+canvas.height = 236;
+}
+if (filteredArr.length == 2) {
+canvas.height = 302;
+}
+if (filteredArr.length == 3) {
+canvas.height = 376;
+}
+if (filteredArr.length == 4) {
+canvas.height = 446;
+}
+if (filteredArr.length == 5) {
+canvas.height = 674;
+}
+
+
+imageObj.onload = function(){
+context.drawImage(imageObj, 0, 0);
+context.fillStyle = "#d3d3d3";
+context.font = "14px Segoe UI";
+context.lineStyle = "#ffff00";
+context.fillText(filteredArr[0], 51,203);	//Message1
+context.fillText(filteredArr[1], 51, 273);	//Message2
+context.fillText(filteredArr[2], 51, 343);	//Message3
+context.fillText(filteredArr[3], 51, 413);	//Message4
+context.fillText(filteredArr[4], 51, 483);	//Message5
+context.fillStyle = "#9d9d9d";
+context.font = "10px Segoe UI";
+context.fillText(PMAM, 269,183);	//Time1
+context.fillText(PMAM, 269,253);	//Time2
+context.fillText(PMAM, 269,323);	//Time3
+context.fillText(PMAM, 269,393);	//Time4
+context.fillText(PMAM, 269,463);	//Time5
+context.fillStyle = "#2f94e9";
+context.font = "14px Segoe UI";
+context.fillText(username, 51,183);	//Name1
+context.fillText(username, 51,253);	//Name2
+context.fillText(username, 51,323);	//Name3
+context.fillText(username, 51,393);	//Name4
+context.fillText(username, 51,463);	//Name5
+context.fillStyle = "#faad14";
+context.font = "12px Segoe UI";
+context.fillText(UsernameClass.innerHTML+" has muted "+username, 11,130);	//Mute
+};
+imageObj2.onload = function(){
+context.drawImage(imageObj2, 11, 170,33,33);
+context.roundRect(10,169,35,35,5);
+context.lineWidth = 3;
+context.strokeStyle = "rgb(30,39,46,255)";
+context.stroke();
+context.drawImage(imageObj2, 11, 241,33,33);
+context.roundRect(10,240,35,35,5);
+context.lineWidth = 3;
+context.strokeStyle = "rgb(30,39,46,255)";
+context.stroke();
+context.drawImage(imageObj2, 11, 312,33,33);
+context.roundRect(10,311,35,35,5);
+context.lineWidth = 3;
+context.strokeStyle = "rgb(30,39,46,255)";
+context.stroke();
+context.drawImage(imageObj2, 11, 383,33,33);
+context.roundRect(10,382,35,35,5);
+context.lineWidth = 3;
+context.strokeStyle = "rgb(30,39,46,255)";
+context.stroke();
+context.drawImage(imageObj2, 11, 454,33,33);
+context.roundRect(10,453,35,35,5);
+context.lineWidth = 3;
+context.strokeStyle = "rgb(30,39,46,255)";
+context.stroke();
+context.drawImage(imageObj2, 290, 116,21,21);
+context.roundRect(290,116,22,22,5);
+context.lineWidth = 3;
+context.strokeStyle = "rgb(30,39,46,255)";
+context.stroke();
+}
+
+
 
 
 
@@ -473,7 +613,7 @@ function Run(){
 const whatever  = document.querySelectorAll('.sc-fjdhpX').length > 0;
 if (whatever) {
 var x = document.getElementsByClassName('sc-fjdhpX eyTYBo')[0].childNodes[0].childNodes[0].childNodes[0].childNodes[1].textContent;
-document.getElementById("Welcome").innerText = ""}
+}
 else {
 Restores();}}
 
@@ -497,6 +637,24 @@ for(i=0; i<colsd.length; i++) {
 colsd[i].style.left = '150%';}
 
 }
+
+CloseDialogueCanvas.onclick = function () {
+const audio = new Audio("https://proxy.notificationsounds.com/notification-sounds/me-too-603/download/file-sounds-1144-me-too.mp3");
+audio.play();
+var colsdsss = document.getElementsByClassName('SettingsPos');
+for(i=0; i<colsdsss.length; i++) {
+colsdsss[i].style.top = '3px';}
+var colsd = document.getElementsByClassName('CanvasClass');
+for(i=0; i<colsd.length; i++) {
+colsd[i].style.left = '150%';}
+
+}
+
+
+
+
+
+
 cancel.onclick = function () {
 var cols = document.getElementsByClassName('ConfirmationClass');
 for(i=0; i<cols.length; i++) {
@@ -549,6 +707,8 @@ var cols55 = document.getElementsByClassName('UserInfoClass');
 for(i=0; i<cols55.length; i++) {
 cols55[i].style.top = '-200%';
 }
+
+
 }
 OKusers.onclick = function () {
 var cols55 = document.getElementsByClassName('UserInfoClass');
@@ -557,9 +717,21 @@ cols55[i].style.top = '-200%';
 }
 }
 
+Screenshot.onclick = function () {
+var cols55 = document.getElementsByClassName('CanvasClass');
+for(i=0; i<cols55.length; i++) {
+cols55[i].style.left = '30%';
+}
+
+var colsd = document.getElementsByClassName('MessagesClass');
+for(i=0; i<colsd.length; i++) {
+colsd[i].style.left = '150%';
+}
+}
+
+
+
 </script>
-
-
 
 
 
@@ -608,7 +780,7 @@ overflow: auto;
 
 .modal {
   display: block;
-  position: fixed; /* Stay in place */
+  position: fixed;
 top:100px;
 left:250px;
     width:550px;
@@ -629,6 +801,14 @@ transition: left 0.6s;
  left:5px;
 transition: top 0.8s;
 }
+.CanvasClass {
+    position: fixed;
+    top: 11%;
+    left: 150%;
+    transition: left 0.8s;
+}
+
+
 
 .MessagesClass {
     position: fixed;
@@ -668,24 +848,9 @@ font-size: 14px;
 .Welcome-msg {
 position:fixed;
 top:7px;
-left:5px;
+left:89px;
 font-size: 14px;
--webkit-animation: colorchange 1.5s infinite alternate;
-}
-@-webkit-keyframes colorchange {
-  0% {
-    color: #eedd82;
-  }
-
-  30% {
-    color:  #ffbf00;
-  }
-    60% {
-    color: ff9912;
-  }
-    100% {
-    color: white;
-  }
+color: white;
 }
 
 .ant-btnY {
